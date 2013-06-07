@@ -1,0 +1,62 @@
+#set($hostStructure = $structures.findStructureByVelocityVarName("Host"))
+#set($imageHostList = $dotcontent.pull("+structureInode:${hostStructure.inode} +working:true +host.isdefault:true ", "1", ""))
+#foreach($hostI in $imageHostList)
+  #set($imageHost = $hostI)
+#end
+<div id="backgroundImages">
+  #set($imageFoldersList = $ecardstool.findImagesSubFoldersByParentFolderAndHost("/ecards/gallery/", $imageHost.identifier))
+  #foreach($subfolder in $imageFoldersList)
+    #set($imageList = $ecardstool.findImagesByFolderAndHost("/ecards/gallery/${subfolder.name}", $imageHost.identifier))
+    <div id="${subfolder.name}Images" class="ecardsDivs">
+      #set($ecardCounter=1)
+      #foreach($imageE in $imageList)
+        #if("$imageE.identifier" == "$image")
+          #set($imageInode="$imageE.inode")
+          #set($imageHeight="$imageE.height")
+          #set($imageWidth="$imageE.width")
+          #set($eCardClass="ecardsthumbs ecardsselected")
+        #else
+          #set($eCardClass="ecardsthumbs")
+        #end
+        <a id="img-${imageE.identifier}" class="$!eCardClass" href="javascript:selectBackground('${imageE.identifier}','${imageE.inode}','${imageE.height}','${imageE.width}')"><img src="/contentAsset/image/${imageE.inode}/fileAsset/byInode/1/filter/Resize/resize_w/60/resize_h/60/" /></a>
+        #if($ecardCounter == 5)
+          <div style="clear:both;"></div>
+          #set($ecardCounter=1)
+        #else
+          #set($ecardCounter=$math.add($ecardCounter,1))
+        #end
+      #end
+    </div>
+  #end
+</div>
+<input type="hidden" id="imageInode" name="imageInode" value="$!imageInode"/>
+<input type="hidden" id="imageHeight" name="imageHeight" value="$!imageHeight"/>
+<input type="hidden" id="imageWidth" name="imageWidth" value="$!imageWidth"/>
+
+<script type="text/javascript">
+function selectBackground(imageIdentifier, imageInode, imageHeight, imageWidth){
+  document.getElementById('image').value=imageIdentifier;
+  document.getElementById('imageInode').value=imageInode;
+  document.getElementById('imageHeight').value=imageHeight;
+  document.getElementById('imageWidth').value=imageWidth;
+  
+  dojo.query('.ecardsthumbs').forEach(function(node){
+    if(node.id == 'img-'+imageIdentifier){
+      node.className="ecardsthumbs ecardsselected";
+    }else{
+      node.className="ecardsthumbs";
+    }
+  });
+}
+
+function showThumbDiv(divId) {
+  //alert("image type:"+divId);
+  dojo.query('.ecardsDivs').forEach(function(node){
+    if(node.id == divId) {
+      node.style.display='';
+    }else{
+      node.style.display='none';
+    }
+  });
+}
+</script>

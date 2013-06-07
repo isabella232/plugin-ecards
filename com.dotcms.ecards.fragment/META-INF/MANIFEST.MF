@@ -1,0 +1,18 @@
+Bundle-ManifestVersion: 2
+Bundle-Name: eCards System extra packages
+Bundle-SymbolicName: com.dotcms.osgi.ecards.fragment
+Bundle-Version: 1.1
+Bundle-Description: Bundle exporting eCards libs
+Fragment-Host: system.bundle; extension:=framework
+Export-Package: com.liferay.portal.model,
+ com.liferay.util,
+ com.dotmarketing.beans,
+ com.dotmarketing.portlets.form.business,
+ com.dotmarketing.portlets.folders.model,
+ com.dotmarketing.portlets.folders.business,
+ com.dotmarketing.portlets.files.business,
+ com.dotmarketing.portlets.fileassets.business,
+ com.dotmarketing.portlets.contentlet.model,
+ com.dotmarketing.portlets.languagesmanager.business,
+ com.dotmarketing.portlets.languagesmanager.model
+ 
