@@ -58,7 +58,10 @@ Remember to modify the variable 'public static final String HOST_PORT="";, in th
 
 To use this plugin you need to:
 1. Copy the com.dotcms.ecards.fragment and com.dotcms.ecards folders, plus the build.xml into the "<dotCMS_HOME>/docs/examples/osgi" folder and run this command: ant deploy. This external build.xml will execute the two plugin build.xml files (inside the com.dotcms.ecards.fragment and com.dotcms.ecards folders) to generate the jar files. If you prefer, you could run the build.xml files inside each folder one by one.
+
 2. add first the "fragment-com.dotcms.ecards.fragment.jar" jar file in the dynamic plugins portlet
+
 3. add the "bundle-com.dotcms.ecards.jar" jar file in the dynamic plugins portlet
+
 4. add a widget in the page where you want to use the plugin. The widget should have this code: 
 #dotParse('/ecards/velocity/ecards.vtl')
