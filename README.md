@@ -52,7 +52,7 @@ This bundle activator extends from com.dotmarketing.osgi.GenericBundleActivator 
 This activator will allow you to register the MyToolInfo object using the GenericBundleActivator.registerViewToolService method
 
 ----------------------------------------------------------
-NOTE:
+E-Cards plugin instructions:
 --------------------------------------------------------
 Remember to modify the variable 'public static final String HOST_PORT=""; , in the Ecards.java file, If your server is in a port different of "80" and run "ant" in the osgi directory where you have the plugin. 
 
@@ -60,7 +60,7 @@ To use this plugin you need to:
 
 1) Copy the com.dotcms.ecards.fragment and com.dotcms.ecards folders, plus the build.xml into the "<dotCMS_HOME>/docs/examples/osgi" folder and run this command: ant deploy. 
 
-This external build.xml will execute the two plugin build.xml files (inside the com.dotcms.ecards.fragment and com.dotcms.ecards folders) to generate the jar files. If you prefer, you could run the build.xml files inside each folder one by one.
+This external build.xml will executes the two plugin build.xml files (inside the com.dotcms.ecards.fragment and com.dotcms.ecards folders) to generate the jar files. If you prefer, you could run the build.xml files inside each folder one by one.
 
 2) add first the "fragment-com.dotcms.ecards.fragment.jar" jar file in the dynamic plugins portlet
 
