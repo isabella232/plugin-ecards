@@ -1,0 +1,15 @@
+<project name="Bundle Builder" default="build">
+
+    <property name="ecard.fragment" value="${basedir}/com.dotcms.ecards.fragment"/>
+    <property name="ecard.bundle" value="${basedir}/com.dotcms.ecards"/>
+    
+    <target name="clean">
+		<ant antfile="${ecard.fragment}/build.xml" target="clean" inheritall="false" />
+		<ant antfile="${ecard.bundle}/build.xml" target="clean" inheritall="false" />
+	</target>
+    
+    <target name="deploy">
+        <ant antfile="${ecard.fragment}/build.xml" target="build" inheritall="false" />
+		<ant antfile="${ecard.bundle}/build.xml" target="build" inheritall="false" />
+    </target>
+</project>
